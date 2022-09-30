@@ -41,11 +41,11 @@ function getSchedule(scheduleTarget) {
   } if (allAnimals.includes(scheduleTarget)) {
     return species.find((element) => element.name === scheduleTarget).availability;
   } if (weekDays.includes(scheduleTarget)) {
-    let key = scheduleTarget;
+    const key = scheduleTarget;
     const obj = {};
     obj[key] = daysOfWeek[key];
     return obj;
   } return daysOfWeek;
 }
-console.log(getSchedule('Monday'))
+// console.log(getSchedule('Monday'))
 module.exports = getSchedule;
