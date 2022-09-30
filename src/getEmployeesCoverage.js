@@ -28,9 +28,13 @@ const allEmployees = () => employees.map((element) => {
 function getEmployeesCoverage(nameOrId) {
   if (nameOrId === undefined) {
     return allEmployees();
-  }
+  } let foundEmpl = allEmployees().filter((element) => element.id === nameOrId.id);
+  if (foundEmpl.length !== 0) {
+    return foundEmpl[0];
+  } foundEmpl = allEmployees().filter((elem) => elem.fullName.split(' ').includes(nameOrId.name));
+  if (foundEmpl.length !== 0) {
+    return foundEmpl[0];
+  } throw new Error('Informações inválidas');
 }
-// console.log (employees)
-console.log(getEmployeesCoverage());
-// console.log(getSpeciesLocations(['lions']))
+
 module.exports = getEmployeesCoverage;
