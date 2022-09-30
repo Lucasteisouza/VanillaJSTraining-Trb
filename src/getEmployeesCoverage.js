@@ -4,8 +4,8 @@ const { employees, species } = data;
 
 function getSpeciesByIds(ids) {
   const selectedIds = [];
-  ids.forEach((element) =>{
-    selectedIds.push(species.find((specie) => specie.id === element).name)
+  ids.forEach((element) => {
+    selectedIds.push(species.find((specie) => specie.id === element).name);
   });
   return selectedIds;
 }
