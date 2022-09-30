@@ -21,5 +21,5 @@ describe('Testes da função HandlerElephants', () => {
   });
   it('if param is random string, return null', () => {
     expect(handlerElephants('oopa')).toBe(null);
-  })
+  });
 });
