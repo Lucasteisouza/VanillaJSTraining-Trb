@@ -10,7 +10,8 @@ const residentsBySpecies = (animal) => {
 
 const residentsBySpeciesAndSex = (animal, sex) => {
   const sexo = sex;
-  const currSpecie = species.find((element) => element.name === animal);
+  const speciesCopy = species.map((element) => element);
+  const currSpecie = speciesCopy.find((element) => element.name === animal);
   const { residents } = currSpecie;
   const currSpecieSexed = residents.filter((element) => element.sex === sexo);
   const currSpeciesRes = currSpecieSexed.map((element) => element.name);
@@ -19,7 +20,8 @@ const residentsBySpeciesAndSex = (animal, sex) => {
 
 const residentsBySpeciesBySexSorted = (animal, sex) => {
   const sexo = sex;
-  const currSpecie = species.find((element) => element.name === animal);
+  const speciesCopy = JSON.parse(JSON.stringify(species));
+  const currSpecie = speciesCopy.find((element) => element.name === animal);
   currSpecie.residents.sort((a, b) => (a.name > b.name ? 1 : -1));
   const { residents } = currSpecie;
   const currSpecieSexed = residents.filter((element) => element.sex === sexo);
@@ -28,8 +30,10 @@ const residentsBySpeciesBySexSorted = (animal, sex) => {
 };
 
 const residentsBySpeciesSorted = (animal) => {
-  const currSpecie = species.find((element) => element.name === animal);
+  const speciesCopy = JSON.parse(JSON.stringify(species));
+  const currSpecie = speciesCopy.find((element) => element.name === animal);
   currSpecie.residents.sort((a, b) => (a.name > b.name ? 1 : -1));
+  console.log(speciesCopy[0])
   const currSpeciesRes = currSpecie.residents.map((element) => element.name);
   return currSpeciesRes;
 };
@@ -129,11 +133,8 @@ function getAnimalMap(option) {
   }
   return animalSpeciesByRegion();
 }
-// console.log(includeNamesSorted({includeNames: true, sorted: true}));
-// console.log(getAnimalMap({ includeNames: true, sex: 'female' }).NE);
-// console.log(getAnimalMap({ includeNames: true, sex: 'female', sorted: true }).NE);
 
-// console.log(residentsBySpeciesSorted('lions'));
-// console.log(residentsBySpeciesBySexSorted('lions', 'male'))
+// console.log(getAnimalMap({ includeNames: true, sorted: true }));
+// getAnimalMap({ includeNames: true, sorted: true })
 
 module.exports = getAnimalMap;
