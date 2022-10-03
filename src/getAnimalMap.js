@@ -33,7 +33,6 @@ const residentsBySpeciesSorted = (animal) => {
   const speciesCopy = JSON.parse(JSON.stringify(species));
   const currSpecie = speciesCopy.find((element) => element.name === animal);
   currSpecie.residents.sort((a, b) => (a.name > b.name ? 1 : -1));
-  console.log(speciesCopy[0])
   const currSpeciesRes = currSpecie.residents.map((element) => element.name);
   return currSpeciesRes;
 };
